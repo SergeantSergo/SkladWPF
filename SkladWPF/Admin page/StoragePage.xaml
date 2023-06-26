@@ -1,0 +1,55 @@
+﻿<Page x:Class="SkladWPF.Admin_page.StoragePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SkladWPF.Admin_page"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="500" d:DesignWidth="520"
+      Title="" Background="#D9D9D9">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="117"/>
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="1" Content="ПРОДУКЦИЯ НА СКЛАДАХ" Margin="0,10,0,67" FontSize="20" FontFamily="Bodoni Bd BT" FontWeight="Bold" HorizontalAlignment="Left" Width="480" Height="40" Grid.ColumnSpan="6"/>
+        <TextBox x:Name="textBox_search" Grid.Column="1" Margin="0,55,38,37" TextWrapping="Wrap" Height="25" FontSize="18" FontWeight="Bold" BorderBrush="Black" Background="#50E984" TextChanged="textBox_search_TextChanged" Grid.ColumnSpan="2"/>
+        <DataGrid Grid.Column="1" Grid.Row="1"  BorderBrush="Black" x:Name="ProductGrid" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="6" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="продукция" Width="*" Binding= "{Binding Products.NameProduct}"></DataGridTextColumn>
+                <DataGridTextColumn Header="едниница измерения" Width="*" Binding="{Binding Products.Unit}"/>
+                <DataGridTextColumn Header="количество" Width="*" Binding= "{Binding Number}"/>
+                <DataGridTextColumn Header="стеллаж" Width="*" Binding="{Binding Shelf}"/>
+                <DataGridTextColumn Header="склад" Width="*" Binding="{Binding Storage.Name}"/>
+                <DataGridTextColumn Header="срок годности" Width="*" Binding="{Binding ExpirationDate, StringFormat=\{0:dd.MM.yyyy \}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Rectangle Height="25" Margin="0,55,9,0"  VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Right" Width="24">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Resources/pngegg.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Button x:Name="AddButton" Grid.Column="2" Content="Добавить" Margin="0,10,0,0" Background="#50E984" FontSize="20" FontWeight="Bold" BorderBrush="Black" Click="AddButton_Click" Grid.Row="2" Foreground="Black" HorizontalAlignment="Center" Width="145"/>
+        <Button x:Name="DeleteButton" Grid.Column="5" Content="Удалить" Margin="0,10,0,0" Background="#50E984" FontSize="20" FontWeight="Bold" BorderBrush="Black" Grid.Row="2" Click="DeleteButton_Click" HorizontalAlignment="Center" Width="144"/>
+        <Button x:Name="NavigationButton" Grid.Column="5" Content="редактировать склады" Margin="0,55,0,0" Background="#50E984" FontSize="18" FontWeight="Bold" BorderBrush="Black"  Height="25" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="220" VerticalAlignment="Top" Click="NavigationButton_Click"/>
+
+    </Grid>
+</Page>

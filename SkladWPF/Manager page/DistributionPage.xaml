@@ -1,0 +1,171 @@
+﻿<Page x:Class="SkladWPF.Manager_page.DistributionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SkladWPF.Manager_page"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="500" d:DesignWidth="520"
+      Title="" Background="#D9D9D9">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="10*"/>
+
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="50*"/>
+
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" Margin="0,0,0,202" Grid.RowSpan="2" BorderBrush="Black" x:Name="PlanGrid" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Склад-поставшик" Width="*" Binding="{Binding Storage1}"/>
+                <DataGridTextColumn Header="Склад-приемник" Width="*" Binding="{Binding  Storage2}"/>
+                <DataGridTextColumn Header="Продукция" Width="*" Binding="{Binding Products.NameProduct}"/>
+                <DataGridTextColumn Header="Количество" Width="*" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Дата распределения" Width="*" Binding="{Binding Date, StringFormat=\{0:dd.MM.yyyy \}}"/>
+                <DataGridTemplateColumn Header="Удаление">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteButton" Click='DeleteButton_Click' Background="#50E984" BorderBrush="Black">Удалить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+            <!--Binding="{Binding =}"-->
+        </DataGrid>
+        <Label Content="План распределения" Grid.Row="1" VerticalAlignment="Center" Height="25" Background="#50E984" HorizontalContentAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="5" Grid.Column="1" BorderBrush="Black" OpacityMask="Black"/>
+        <Button x:Name="SaveButton" Content="учесть" Margin="13,119,13,0" VerticalAlignment="Top" Click="SaveButton_Click" Grid.Row="3" Grid.Column="3" Height="40" 
+            Background="#50E984" FontSize="20" FontWeight="Bold" BorderBrush="Black" Foreground="Black"/>
+
+        <ComboBox x:Name="Sklad1Combo" Grid.Column="2" Margin="7,0,7,126" Grid.Row="3" Height="30" VerticalAlignment="Bottom" DisplayMemberPath="Name"/>
+        <ComboBox x:Name="ProductCombo" Grid.Column="2" Margin="7,0,7,48" Grid.Row="3" Height="30" VerticalAlignment="Bottom" DisplayMemberPath="NameProduct"/>
+        <ComboBox x:Name="Sklad2Combo" Grid.Column="4" Margin="5,46,8,0" Grid.Row="3" VerticalAlignment="Top" Height="30" DisplayMemberPath="Name"/>
+
+        <TextBox x:Name="DateTxb" Grid.Column="3" Margin="13,46,12,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="NumberTxb" Grid.Column="4" Margin="5,124,9,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" PreviewTextInput="NumberTxb_PreviewTextInput" TextChanged="NumberTxb_TextChanged"/>
+
+        <Label Grid.Column="2" Content="Выберите склад-поставщик" HorizontalAlignment="Left" Margin="2,0,0,157" Grid.Row="3" FontSize="10" Height="22" VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <Label Grid.Column="2" Content="Выберите продукцию" HorizontalAlignment="Left" Margin="2,0,0,79" Grid.Row="3" FontSize="10" Height="22" VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <Label Grid.Column="3" Content="Введите дату" HorizontalAlignment="Left" Margin="7,0,0,156" Grid.Row="3" FontSize="10" Height="22" VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <Label Grid.Column="4" Content="Выберите склад приемник" HorizontalAlignment="Left" Margin="0,0,0,156" Grid.Row="3" FontSize="10" Height="22" VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <Label Grid.Column="4" Content="Введите количество" HorizontalAlignment="Left" Margin="0,0,0,79" Grid.Row="3" FontSize="10" Height="22" VerticalAlignment="Bottom" FontWeight="Bold"/>
+
+        <Rectangle Grid.Column="2" HorizontalAlignment="Center" Height="4" Margin="0,41,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" HorizontalAlignment="Center" Height="4" Margin="0,77,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="4" HorizontalAlignment="Left" Height="4" Margin="5,41,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="4" HorizontalAlignment="Left" Height="4" Margin="5,77,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="4" HorizontalAlignment="Left" Height="4" Margin="5,119,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="4" HorizontalAlignment="Left" Height="4" Margin="5,155,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" HorizontalAlignment="Center" Height="4" Margin="0,0,0,79" Grid.Row="3" Stroke="Black" VerticalAlignment="Bottom" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" HorizontalAlignment="Center" Height="4" Margin="0,0,0,43" Grid.Row="3" Stroke="Black" VerticalAlignment="Bottom" Width="136" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="3" HorizontalAlignment="Center" Height="4" Margin="0,41,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="3" HorizontalAlignment="Center" Height="4" Margin="0,77,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.5,0.5" Fill="#50E984" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.ColumnSpan="5" Height="26" Grid.Row="1" Stroke="Black" VerticalAlignment="Center" Grid.Column="1"/>
+
+    </Grid>
+</Page>

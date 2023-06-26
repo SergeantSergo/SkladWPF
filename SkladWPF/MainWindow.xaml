@@ -1,0 +1,27 @@
+﻿<Window x:Class="SkladWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SkladWPF"
+        mc:Ignorable="d"
+        Title="" Height="350" Width="320" Background="#FF231E1E"
+        ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid MouseDown="Grid_MouseDown">
+        <Rectangle RadiusX="15" RadiusY="15" Stroke="Black" Fill="#FF888888" RenderTransformOrigin="0.438,0.122" HorizontalAlignment="Center" Width="320" Height="350" VerticalAlignment="Center"/>
+        <Label Content="Авторизация" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="40" Width="173" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="Black" Foreground="#FFEDEDED" FontFamily="Ink Free"/>
+        <TextBox x:Name="TextBoxLog" Margin="0,177,0,0" Text="" BorderBrush="#2B2B2B" Background="#2B2B2B" Foreground="#50E984" FontFamily="Arial" HorizontalAlignment="Center" Width="160" Height="25" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15"/>
+        <!--<TextBox Margin="323,230,0,0" TextWrapping="Wrap" Text="" Background="#FF4A4747" Foreground="#FF73E8D0" FontFamily="Arial" HorizontalAlignment="Left" Width="160" Height="25" VerticalAlignment="Top"/>-->
+        <Button x:Name="InButton" Content="Войти" HorizontalAlignment="Left" Margin="130,264,0,0" VerticalAlignment="Top" Height="25" Width="56" Foreground="Black" Background="#50E984" FontWeight="Bold" Click="InButton_Click" BorderBrush="Black" />
+        <PasswordBox x:Name="PassBox" Password="" BorderBrush="#2B2B2B" Background="#2B2B2B" Margin="0,217,0,0" Foreground="#50E984" FontFamily="Arial" HorizontalAlignment="Center" Width="160" Height="25" VerticalAlignment="Top" />
+
+        <Button x:Name="CloseButton" Content="X" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="16" Height="16" Click="CloseButton_Click" Background="#424242" BorderBrush="Black" Foreground="White"/>
+        <Button x:Name="MinButton" Content="-" HorizontalAlignment="Left" Margin="273,10,0,0" VerticalAlignment="Top" Width="16" Height="16" Click="MinButton_Click" Background="#424242" BorderBrush="Black" Foreground="White"/>
+        <Rectangle HorizontalAlignment="Center" Height="100" Margin="0,32,0,0"  VerticalAlignment="Top" Width="100">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Resources/Svetodiodniesvetilnikidlyasklada.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+    </Grid>
+</Window>

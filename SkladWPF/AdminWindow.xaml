@@ -1,0 +1,46 @@
+﻿<Window x:Class="SkladWPF.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SkladWPF"
+        mc:Ignorable="d"
+        Height="500" Width="700" WindowStartupLocation="CenterScreen" Background="Black" MinHeight="500" MinWidth="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="450*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Frame Background="White" x:Name="Frame" Grid.Column="1" Content="Администратор" Grid.RowSpan="16" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="RequestButton" Content="ЗАПРОСЫ" VerticalAlignment="Center" Height="40" Grid.Row="1" Background="#50E984" BorderBrush="Black" Click="RequestButton_Click" Margin="10,0,10,0" FontWeight="Bold"/>
+        <Button x:Name="ProductStrockButton" Content="СКЛАДЫ " VerticalAlignment="Center" Height="40" Grid.Row="7" Background="#50E984" BorderBrush="Black" Click="ProductStrockButton_Click" Margin="10,0,10,0" FontWeight="Bold"/>
+        <Button x:Name="UserButton" Content="ПОЛЬЗОВАТЕЛИ И ПОСТАВЩИКИ" VerticalAlignment="Center" Height="40" Grid.Row="9" Background="#50E984" BorderBrush="Black" Click="UserButton_Click" Margin="10,0,10,0" FontWeight="Bold" FontSize="9"/>
+        <Button x:Name="ApplicationsButton" Content="ПОПОЛНЕНИЕ" VerticalAlignment="Center" Height="40" Grid.Row="3" Background="#50E984" BorderBrush="Black" Click="ApplicationsButton_Click" Margin="10,0,10,0" FontWeight="Bold"/>
+
+        <Button x:Name="ReloacationButton" Content="РАСПРЕДЕЛЕНИЕ" VerticalAlignment="Center" Height="40" Grid.Row="5" Background="#50E984" BorderBrush="Black" Click="ReloacationButton_Click" Margin="10,0,10,0" FontWeight="Bold"/>
+
+        <Button x:Name="exitButton" Content="ВЫХОД" VerticalAlignment="Center" Height="40" Grid.Row="14" Background="#50E984" BorderBrush="Black" Click="exitButton_Click" Margin="10,0,10,0" FontWeight="Bold"/>
+
+        <Button x:Name="ProductButton" Content="ПРОДУКЦИЯ" VerticalAlignment="Center" Height="44" Grid.Row="11" Background="#50E984" BorderBrush="Black" Click="ProductButton_Click" Margin="10,0,10,0" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
